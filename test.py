@@ -6,7 +6,7 @@ class Test:
 	
 	@staticmethod
 	def randomNumberTest(rng: RandomNumber):
-		numbers = [i for i in range(rng.mini, rng.maxi + 1) if (not rng.odd or i % 2 == 1) and any([i % j == 0 for j in rng.mult])];
+		numbers = [i for i in range(rng.mini, rng.maxi + 1) if (not rng.odd or i % 2 == 1) and all([i % j == 0 for j in rng.mult])];
 		num = numbers.copy()
 		print("Numbers to generate:", len(numbers))
 		print(numbers)
@@ -53,5 +53,13 @@ class Test:
 
 if __name__ == "__main__":
 	r = RandomNumber(mult = [5], mini = 0, maxi = 200, odd = False)
+	Test.randomNumberTest(r)
+	
+	r = RandomNumber(mult = [2, 5], mini = 0, maxi = 200, odd = False)
+	Test.randomNumberTest(r)
 
+	r = RandomNumber(mult = [2, 5, 8], mini = 0, maxi = 200, odd = False)
+	Test.randomNumberTest(r)
+
+	r = RandomNumber(mult = [2, 5, 9], mini = 0, maxi = 200, odd = False)
 	Test.randomNumberTest(r)
