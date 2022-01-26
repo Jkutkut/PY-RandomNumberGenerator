@@ -6,10 +6,10 @@ class Test:
 	
 	@staticmethod
 	def randomNumberTest(rng: RandomNumber):
-		numbers = [i for i in range(rng.mini, rng.maxi) if (not rng.odd or i % 2 == 1) and any([i % j == 0 for j in rng.mult])];
+		numbers = [i for i in range(rng.mini, rng.maxi + 1) if (not rng.odd or i % 2 == 1) and any([i % j == 0 for j in rng.mult])];
 		num = numbers.copy()
-		#print("Numbers to generate:", len(numbers))
-		#print(numbers)
+		print("Numbers to generate:", len(numbers))
+		print(numbers)
 		
 		i = 0
 		while i < Test.MAX_TESTS and len(numbers) > 0:
