@@ -24,7 +24,7 @@ class Test:
 
 	@staticmethod
 	def print_fail(message, end = '\n'):
-		print('\x1b[1;31m' + message.strip() + '\x1b[0m', end = end)
+		sys.stdout.write('\x1b[1;31m' + message.strip() + '\x1b[0m', end = end)
 
 	@staticmethod
 	def print_pass(message, end = '\n'):
@@ -44,6 +44,6 @@ class Test:
 
 
 if __name__ == "__main__":
-	r = RandomNumber([5], mini = 0, maxi = 200)
+	r = RandomNumber(mult = [5], mini = 0, maxi = 200)
 
 	Test.randomNumberTest(r)
