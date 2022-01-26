@@ -1,10 +1,13 @@
+from random import randint
+
 class RandomNumber:
 
 	def __init__(self, mult: list, mini: int, maxi: int, odd: bool = False):
 		self.mult = mult
-		self.fprimos = self.getFactoresPrimos()
+		self.fprimos = RandomNumber.getFactoresPrimos(mult)
 		self.mini = mini
 		self.maxi = maxi
+		self.odd = odd
 
 	def getRandom(self):
 		if self.odd:
@@ -13,16 +16,20 @@ class RandomNumber:
 			return self.getNumber()
 
 	def getNumber(self):
-		return 0
+		fp = 1
+		for i in self.fprimos:
+			fp *= i
+		return randint(self.mini // fp, self.maxi // fp) * fp
 	
 	def getOddNumber(self):
 		return 0
 
-	def getFactoresPrimos(self):
-		self.fprimos = set()
-		for i in self.mult:
-			self.fprimos.update(RandomNumber.factoresPrimos(i))
-		print(self.fprimos)
+	@staticmethod
+	def getFactoresPrimos(mult):
+		fprimos = set()
+		for i in mult:
+			fprimos.update(RandomNumber.factoresPrimos(i))
+		return fprimos
 		
 	@staticmethod
 	def factoresPrimos(n: int):
